@@ -21,6 +21,24 @@ try
 				throw new Exception('Erreur : aucun identifiant de billet envoyé !');
 			}
 		}
+		else if($_GET['action'] == 'addComment')
+		{
+			if(isset($_GET['id']) && $_GET['id'] > 0)
+			{
+				if(!empty($_POST['author']) && !empty($_POST['comment']))
+				{
+					addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+				}
+				else
+				{
+					throw new Exception('Erreur : tous les champs ne sont pas remplis !');
+				}
+			}
+			else
+			{
+				throw new Exception('Erreur : aucun identifiant de billet envoyé !');
+			}
+		}
 	}
 	else
 	{
