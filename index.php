@@ -36,7 +36,22 @@ try
 			}
 			else
 			{
-				throw new Exception('Erreur : aucun identifiant de billet envoyé !');
+				throw new Exception('Erreur : identifiant de billet incorrect !');
+			}
+		}
+
+		else if ($_GET['action'] == 'createNewArticle')
+		{
+			createNewArticle();
+		}
+		else if ($_GET['action'] == 'postArticle')
+		{
+			if(!empty($_POST['articleContent']))
+			{
+				addPost($_POST['articleContent']);
+			}
+			else{
+				throw new Exception("Le champ n'a pas été rempli.\nL'envoi des données est impossible.");
 			}
 		}
 		else if($_GET['action'] == 'edit')
@@ -54,7 +69,7 @@ try
 		{
 			if(isset($_GET['id']) && $_GET['id'] > 0)
 			{
-				if(!empty($_POST['articleContent']) && !empty($_POST['articleTitle']))
+				if(!empty($_POST['articleContent']))
 				{
 					updatePost($_GET['id'], $_POST['articleContent']);
 				}

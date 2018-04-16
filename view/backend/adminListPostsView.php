@@ -4,6 +4,7 @@
 
 	ob_start(); ?>
 	<h1>Panneau d'administration</h1>
+	<a href="index.php?action=createNewArticle">Créer un article</a>
 	<?php
 
 	while($post = $posts->fetch())
@@ -18,7 +19,7 @@
 		</div>
 		<?php
 	}
-	$posts->closeCursor(); // end of the query
-	$content = ob_get_clean(); // content of the view
-	require('templateAdmin.php'); // call the template 
+	$posts->closeCursor();
+	$content = ob_get_clean();
+	require('templateAdmin.php');
 ?>

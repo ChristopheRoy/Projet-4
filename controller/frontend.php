@@ -45,6 +45,26 @@ function adminListPosts()
 	require('view/backend/adminListPostsView.php');
 }
 
+function createNewArticle()
+{
+	require('view/backend/createNewArticleView.php');
+}
+
+function addPost($postContent)
+{
+	$postManager = new PostManager();
+	$affectedLines = $postManager->postPost($postContent);
+
+	if($affectedLines == false)
+	{
+		throw new Exception('Impossible d\'ajouter le post en base de donnée !');
+	}
+	else
+	{
+		header('Location: index.php?acces=admin');
+	}
+}
+
 function editPost()
 {
 	$postManager = new PostManager();

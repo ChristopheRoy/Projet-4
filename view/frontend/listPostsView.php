@@ -7,11 +7,8 @@
 	{
 	?>
 		<div class="news">
-			<h3>
-				<?= htmlspecialchars($data['title']) ?>		
-			</h3>
 			<p>
-				<?= htmlspecialchars($data['content'])?>
+				<?= $data['content'] ?>
 			</p>
 			<span>
 				<?= 'Le '. htmlspecialchars($data['creation_date']) ?>	
