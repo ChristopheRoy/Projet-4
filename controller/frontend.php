@@ -36,3 +36,11 @@ function addComment($postId, $author, $comment)
 		header('Location: index.php?action=post&id=' . $postId);
 	}
 }
+
+function adminListPosts()
+{
+	$postManager = new PostManager();
+	$posts = $postManager->getPostsPreviews();
+
+	require('view/backend/adminListPostsView.php');
+}
