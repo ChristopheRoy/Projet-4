@@ -39,10 +39,46 @@ try
 				throw new Exception('Erreur : aucun identifiant de billet envoyé !');
 			}
 		}
+		else if($_GET['action'] == 'edit')
+		{
+			if(isset($_GET['id']) && $_GET['id'] > 0)
+			{
+				editPost();
+			}
+			else
+			{
+				throw new Exception("Erreur : aucun identifiant de billet envoyé !\nImpossible d'éditer le message.");
+			}
+		}
+		else if($_GET['action'] == 'update_post')
+		{
+			if(isset($_GET['id']) && $_GET['id'] > 0)
+			{
+				if(!empty($_POST['articleContent']) && !empty($_POST['articleTitle']))
+				{
+					updatePost($_GET['id'], $_POST['articleContent']);
+				}
+				else
+				{
+					throw new Exception('Erreur : tous les champs ne sont pas remplis.');
+				}
+			}
+			else
+			{
+				throw new Exception("Erreur : aucun identifiant de billet envoyé !\nImpossible d'éditer le message.");
+			}
+		}
 	}
-	else if(isset($_GET['admin']))
+	else if(isset($_GET['acces']))
 	{
-		adminListPosts();
+		if($_GET['acces'] == 'admin')
+		{
+			adminListPosts();
+		}
+		else
+		{
+			throw new Exception("Erreur inconnue.");
+		}
 	}
 	else
 	{

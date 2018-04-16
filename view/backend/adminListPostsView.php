@@ -9,17 +9,12 @@
 	while($post = $posts->fetch())
 	{
 		?>
-		<div class="news">
-			<h3>
-				<?= htmlspecialchars($post['title']) ?>		
-			</h3>
-			<p>
-				<?= htmlspecialchars($post['content'])?>
-			</p>
+		<div class="news">	
+				<?= $post['content']?>
 			<span>
-				<?= 'Le '. htmlspecialchars($post['creation_date']) ?>	
+				<?= 'Le '. $post['creation_date'] ?>	
 			</span>
-			<a href="">Modifier</a>
+			<a href="index.php?action=edit&id=<?= $post['id'] ?>">Modifier</a>
 		</div>
 		<?php
 	}

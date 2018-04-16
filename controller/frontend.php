@@ -44,3 +44,26 @@ function adminListPosts()
 
 	require('view/backend/adminListPostsView.php');
 }
+
+function editPost()
+{
+	$postManager = new PostManager();
+	$postContent = $postManager->getContentOfEditedPost($_GET['id']);
+
+	require('view/backend/editPostView.php');
+}
+
+function updatePost($postId, $postContent)
+{
+	$postManager = new PostManager();
+	$affectedLines = $postManager->PostUpdatedPost($postId, $postContent);
+
+	if ($affectedLines == false)
+	{
+		throw new Exception('Erreur, affected lines vaut false');
+	}
+	else
+	{
+		header('Location:index.php?acces=admin');
+	}
+}
