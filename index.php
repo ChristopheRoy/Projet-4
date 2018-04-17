@@ -83,6 +83,19 @@ try
 				throw new Exception("Erreur : aucun identifiant de billet envoyé !\nImpossible d'éditer le message.");
 			}
 		}
+		else if ($_GET['action'] == 'delete_post')
+		{
+			
+			if(isset($_POST['checked_post_id']) && !empty($_POST['checked_post_id']))
+				{
+					$checked_posts_id = $_POST['checked_post_id'];
+					removePost($checked_posts_id);
+				}
+				else
+				{
+					echo "Erreur."."<br/>Vous n'avez pas coché de checkbox";
+				}
+		}
 	}
 	else if(isset($_GET['acces']))
 	{
