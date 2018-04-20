@@ -22,6 +22,15 @@ function post()
 	require('view/frontend/postView.php');
 }
 
+function comment()
+{
+	$commentManager = new CommentManager();
+	$comment = $commentManager->getComment($_GET['id']);
+
+
+	require('view/frontend/commentView.php');
+}
+
 function addComment($postId, $author, $comment)
 {
 	$commentManager = new CommentManager();
@@ -34,5 +43,19 @@ function addComment($postId, $author, $comment)
 	else
 	{
 		header('Location: index.php?action=post&id=' . $postId);
+	}
+}
+
+function reportComment($post_id, $comment_id)
+{
+	$commentManager = new CommentManager();
+	$affectedLines = $commentManager->setReportedComment($comment_id);
+
+	if($affectedLines == false)
+	{
+		throw new Exception('Impossible d\'envoyer le commentaire signalé en base de données. Veuillez réessayer plus tard.');
+	}
+	else{
+		header('Location: index.php?action=post&id=' . $post_id);
 	}
 }
