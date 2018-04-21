@@ -1,5 +1,6 @@
 <?php
 
+
 	$title = "Panneau d'administration";
 
 	ob_start(); ?>
@@ -24,6 +25,9 @@
 	?>
 		<input type="submit" value="Effacer la sélection">
 	</form>
+
+	<br/>
+	<a href="index.php">Retour à l'accueil</a>
 	<?php
 	$posts->closeCursor();
 	$content = ob_get_clean();

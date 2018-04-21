@@ -1,4 +1,5 @@
 <?php // router
+session_start();
 
 require('controller/frontend.php');
 require('controller/backend.php');
@@ -67,6 +68,22 @@ try
 			else{
 				throw new Exception('Aucun identifiant d\'article envoyé. Impossible d\'effectuer l\'action demandée.');
 			}
+		}
+		else if($_GET['action'] == 'sign_up')
+		{
+			signUp();
+		}
+		else if($_GET['action'] == 'add_user')
+		{
+			addUser();	
+		}
+		else if ($_GET['action'] == 'sign_in')
+		{
+			signIn();
+		}
+		else if($_GET['action'] == 'disconnect')
+		{
+			disconnect();
 		}
 	}
 	else if(isset($_GET['access']))
