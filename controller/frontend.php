@@ -206,13 +206,15 @@ function sendEmail()
 				$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 				try
 				{
+					require('private/smtp_password.php');
+					
 					//Server settings
 					// $mail->SMTPDebug = 2;                                 // Enable verbose debug output
 					$mail->isSMTP();                                      // Set mailer to use SMTP
 					$mail->Host = 'smtp1.example.com;smtp2.example.com';  // Specify main and backup SMTP servers
 					$mail->SMTPAuth = true;                               // Enable SMTP authentication
 					$mail->Username = 'projet4.test@gmail.com';                 // SMTP username
-					$mail->Password = '7cb0fed221BD6b8a5cBFc4a58daAa463';                           // SMTP password
+					$mail->Password = getMailPassword();                          // SMTP password
 					$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 					$mail->Host = 'smtp.gmail.com'; 
 					$mail->Port = 465;                                    // TCP port to connect to
