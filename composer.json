@@ -1,0 +1,6 @@
+{
+    "name": "projet4/blog",
+    "require": {
+        "phpmailer/phpmailer": "^6.0"
+    }
+}

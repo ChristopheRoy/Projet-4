@@ -5,6 +5,7 @@
 	<?php ob_start(); ?>
 		<h1>Mon super blog !</h1>
 		<h3><?= $messageDeBienvenue ?></h3>
+		<h3>Time : <?= time(); ?></h3>
 		
 		<?php
 		while ($data = $posts->fetch())

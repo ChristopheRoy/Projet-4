@@ -24,6 +24,7 @@ else
 		<input type="password" name="password" placeholder="Mot de passe" /><br/><br/>
 		<input type="submit" value="Se connecter">
 	</form>
+	<br/><a href="index.php?action=forgotten_password">Mot de passe oublié ?</a>
 
 	<h1>S'inscrire</h1>
 
