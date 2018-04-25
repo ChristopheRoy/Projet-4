@@ -10,7 +10,15 @@ try
 	{
 		if($_GET['action'] == 'listPosts')
 		{
-			listPosts();
+			if(isset($_GET['page']) && !empty($_GET['page']) && $_GET['page'] > 0)
+			{
+				$pageCourante = $_GET['page'];
+			}
+			else
+			{
+				$pageCourante = 1;
+			}
+			listPosts($pageCourante);
 		}
 		else if($_GET['action'] == 'post')
 		{
@@ -124,15 +132,24 @@ try
 	{
 		if($_GET['access'] == 'admin')
 		{
-				if($_GET['page'] == 'dashboard')
+				if($_GET['interface'] == 'dashboard')
 				{
-					adminListPosts();
+					if(isset($_GET['page']) && !empty($_GET['page']) && $_GET['page'] > 0)
+					{
+						$_GET['page'] = intval($_GET['page']);
+						$pageCourante = $_GET['page'];
+					}
+					else
+					{
+						$pageCourante = 1;
+					}
+					adminListPosts($pageCourante);
 				}
-				else if ($_GET['page'] == 'createNewArticle')
+				else if ($_GET['interface'] == 'createNewArticle')
 				{
 					createNewArticle();
 				}
-				else if ($_GET['page'] == 'postArticle')
+				else if ($_GET['interface'] == 'postArticle')
 				{
 					if(!empty($_POST['articleContent']))
 					{
@@ -142,7 +159,7 @@ try
 						throw new Exception("Le champ n'a pas été rempli.\nL'envoi des données est impossible.");
 					}
 				}
-				else if($_GET['page'] == 'edit')
+				else if($_GET['interface'] == 'edit')
 				{
 					if(isset($_GET['id']) && $_GET['id'] > 0)
 					{
@@ -153,7 +170,7 @@ try
 						throw new Exception("Erreur : aucun identifiant de billet envoyé !\nImpossible d'éditer le message.");
 					}
 				}
-				else if($_GET['page'] == 'update_post')
+				else if($_GET['interface'] == 'update_post')
 				{
 					if(isset($_GET['id']) && $_GET['id'] > 0)
 					{
@@ -171,7 +188,7 @@ try
 						throw new Exception("Erreur : aucun identifiant de billet envoyé !\nImpossible d'éditer le message.");
 					}
 				}
-				else if ($_GET['page'] == 'delete_post')
+				else if ($_GET['interface'] == 'delete_post')
 				{
 					
 					if(isset($_POST['checked_post_id']) && !empty($_POST['checked_post_id']))
@@ -181,14 +198,14 @@ try
 						}
 						else
 						{
-							echo "Erreur."."<br/>Vous n'avez pas coché de checkbox";
+							throw new Exception("Erreur."."<br/>Vous devez sélectionner au moins un élément.");
 						}
 				}
-				else if ($_GET['page'] == 'reported_comments')
+				else if ($_GET['interface'] == 'reported_comments')
 				{
 					listReportedComments();
 				}
-				else if($_GET['page'] == 'delete_reported_comment')
+				else if($_GET['interface'] == 'delete_reported_comment')
 				{
 					if(isset($_POST['checked_comment_id']) && !empty($_POST['checked_comment_id']))
 					{
@@ -208,7 +225,7 @@ try
 	}
 	else
 	{
-		listPosts();
+		getIndexView();
 	}
 }
 catch(Exception $e)

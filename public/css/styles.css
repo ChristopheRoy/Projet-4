@@ -1,0 +1,414 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Handlee');
+
+body{
+	font-family: 'Montserrat', sans-serif;
+}
+
+.btn{
+	padding:15px;
+	color:white;
+}
+
+.navbar{
+	padding:15px 0;
+}
+
+.navbar-nav .nav-link{
+	text-transform:uppercase;
+}
+
+.navbar-brand{
+	font-family: 'Handlee', cursive;
+	font-size:35px;
+	margin-left:250px;
+}
+
+/*
+*****************************************************
+		     	  ENHANCED CLASSES
+*****************************************************
+*/ 
+
+.mt-6{
+	margin-top:60px;
+}
+
+.mt-7{
+	margin-top:70px;
+}
+
+.mt-8{
+	margin-top:80px;
+}
+
+.mt-9{
+	margin-top:90px;
+}
+
+.mt-10{
+	margin-top:100px;
+}
+
+.mt-11{
+	margin-top:110px;
+}
+
+.mt-12{
+	margin-top:120px;
+}
+
+.mb-6{
+	margin-bottom:60px;
+}
+
+.mb-7{
+	margin-bottom:70px;
+}
+
+.mb-8{
+	margin-bottom:80px;
+}
+
+.mb-9{
+	margin-bottom:90px;
+}
+
+.mb-10{
+	margin-bottom:100px;
+}
+
+.mb-11{
+	margin-bottom:110px;
+}
+
+.mb-12{
+	margin-bottom:120px;
+}
+
+.fa-1_5x{
+	font-size:20px;
+}
+
+.fa-facebook-f{
+	color:#3C5A99;
+}
+
+.fa-twitter{
+	color:#1DA1F2;
+}
+
+.fa-instagram{
+	color:#8D38CB;
+}
+
+.fa-google-plus-g{
+	color:#D24639;
+}
+
+.blue{
+	color:#3187DA;
+}
+
+.purple{
+	color:#8D37F8;
+}
+
+/*
+*****************************************************
+
+				 	 ACCUEIL 
+
+*****************************************************
+*/ 
+
+.indexHeader{
+	overflow:hidden;
+	position:relative;
+}
+
+.authorPicture{
+	color:white;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+
+.authorPicture p{
+	font-size:20px;
+}
+
+.authorPicture img{
+	width:250px;
+	height:250px;
+	margin-bottom:10px;
+	border-radius:50%;
+	transition: transform .2s;
+}
+
+.authorPicture img:hover{
+	 -ms-transform: scale(1.03); /* IE 9 */
+    -webkit-transform: scale(1.03); /* Safari 3-8 */
+    transform: scale(1.03); 
+}
+
+.banniere{
+	width:110%;
+	max-height:600px;
+	margin-left:-15px;
+}
+
+.overlay{
+	position:absolute;
+	top:0;
+	height:100%;
+	width:100%;
+	background:rgba(20,0,0,0.25);
+	margin-left:-15px;
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+}
+
+.texteBanniere{
+	height:100%;
+	color:white;
+	display:flex;
+	flex-direction:column;
+	justify-content:flex-end;
+	align-items:center;
+}
+
+.texteBanniere h2{
+	font-size:40px;
+}
+
+.texteBanniere p{
+	font-size:20px;
+}
+
+.texteBanniere .btn{
+	width:175px;
+	padding:15px 0;
+	background:rgba(0,0,0,0.5);
+	color:white;
+	font-weight:bold;
+}	
+
+.texteBanniere .btn:hover{
+	background:rgba(255,255,255,0.4);
+}
+
+.btnConsulterPage{
+	margin-top:50px;
+	margin-bottom:160px;
+}
+
+.presentation{
+	padding:100px;
+	overflow:hidden;
+}
+
+.presentation .fas{
+	margin-bottom:50px;
+}
+
+.presentationText{
+	margin-bottom:100px;
+}
+
+.presentationSection{
+	box-shadow:4px 5px 15px rgba(0,0,0,0.5);
+	padding:25px;
+	height:500px;
+	margin:0 20px;
+	transition: transform .2s;
+}
+
+.presentationSection:hover{
+	-ms-transform: scale(1.03); /* IE 9 */
+-webkit-transform: scale(1.03); /* Safari 3-8 */
+transform: scale(1.03); 
+}
+
+.presentation .btn1{
+	background:#8b31f9;
+	font-weight:bold;
+	width:175px;
+}
+
+.presentation .btn2{
+	background:#8b31f9;
+	font-weight:bold;
+	width:175px;
+}
+
+.presentation .btn1:hover{
+	background:#2E88D9;
+	color:white;
+}
+
+.presentation .btn2:hover{
+	background:#2E88D9;
+	color:white;
+}
+
+/*
+*****************************************************
+		     	SIGN_IN SIGN_UP SECTION
+*****************************************************
+*/ 
+
+.signInSignUpSection{
+	height:150px;
+	display:flex;
+	align-items:center;
+	background: linear-gradient(270deg, #2463cc, #6d1ddb);
+	background-size: 400% 400%;
+	-webkit-animation: backgroundGradientAnimation 15s ease infinite;
+	-moz-animation: backgroundGradientAnimation 15s ease infinite;
+	animation: backgroundGradientAnimation 15s ease infinite;
+}
+
+@-webkit-keyframes backgroundGradientAnimation {
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
+}
+@-moz-keyframes backgroundGradientAnimation {
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
+}
+@keyframes backgroundGradientAnimation {
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
+}
+
+.signInSignUpSection .btn{
+	background:transparent;
+	color:white;
+	border:2px solid white;
+	width:200px;
+	font-size:20px;
+}
+
+.signInSignUpSection .btnInscription{
+	margin-left:250px;
+}
+
+.signInSignUpSection .btnConnexion{
+	margin-left:950px;
+}
+
+.signInSignUpSection .btn:hover{
+	background:rgba(0,0,0,0.5);
+	border:none;
+}
+
+/*
+*****************************************************
+				 	    HR
+*****************************************************
+*/ 
+
+
+
+hr{
+	background: linear-gradient(to right, #8b31f9 0%,#7126f2 51%,#2989d8 100%,#7db9e8 100%);
+	height:5px;
+	width:350px;
+	border-radius:50%;
+}
+
+
+
+/*
+*****************************************************
+				 	  QUOTE
+*****************************************************
+*/ 
+
+
+/*
+*****************************************************
+
+				  LIST ARTICLES
+
+*****************************************************
+*/ 
+
+.articles{
+	background:rgba(192,192,192,0.3);
+	margin:10px 0;
+	padding:15px;
+}
+
+.comments:hover{
+	text-decoration:none;
+}
+
+/*
+*****************************************************
+
+				  RESPONSIVE
+
+*****************************************************
+*/ 
+
+@media screen and (max-width: 1200px) {
+	.navbar-brand{
+		margin-left:85px;
+	}
+}
+
+@media screen and (max-width: 990px) {
+	.navbar-brand{
+		margin-left:20px;
+	}
+
+	.presentationSection{
+		margin:50px 0;
+	}	
+}
+
+@media screen and (max-width: 842px) {
+	.fixed-top{
+		position:relative;
+	}
+
+	.indexHeader{
+		margin-top:-100px;
+	}
+
+	.texteBanniere{
+		justify-content:flex-start;
+		margin-top:50px;
+	}
+
+	.presentation{
+		padding:0;
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.texteBanniere h2{
+		font-size:30px;
+	}
+
+	.texteBanniere p{
+		font-size:15px;
+	}
+
+	.btnConsulterPage{
+		margin-top:0px;
+		margin-bottom:0px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.presentationSection{
+		height:600px;
+	}
+}

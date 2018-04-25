@@ -9,19 +9,38 @@ require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 require_once('model/UserManager.php');
 
-function listPosts()
+function getIndexView()
 {
 	if(isset($_SESSION['id']) && isset($_SESSION['name']))
 	{
-		$messageDeBienvenue = "Bonjour " . $_SESSION['name'] . " !"." <br/>Vous avez le rank ". $_SESSION['rank'];
+		$messageDeBienvenue = "Bienvenue sur mon site,  " . $_SESSION['name'] . " !";
 	}
 	else
 	{
-		$messageDeBienvenue = 'Bonjour Visiteur ! ';
+		$messageDeBienvenue = 'Bienvenue sur mon site, Visiteur ! ';
 		
 	}
+	require('view/frontend/indexView.php');
+}
+
+function listPosts($pageCourante)
+{
+	$postsPerPage = 5;
+	$depart = ($pageCourante-1)*$postsPerPage;
+
 	$postManager = new PostManager();
-	$posts = $postManager->getPosts();
+	$posts = $postManager->getPostsPreviews($depart, $postsPerPage);
+	$numberOfPosts = $postManager->getNumberOfPosts();
+
+	$nombreDePages = ceil($numberOfPosts/$postsPerPage)+1; 
+
+	if(isset($_GET['page']) && $_GET['page'] > $nombreDePages)
+	{
+		header('Location: index.php?action=listPosts');
+	}
+	
+
+	$commentManager = new CommentManager(); // used to call a method in the view
 
 	require('view/frontend/listPostsView.php');
 }

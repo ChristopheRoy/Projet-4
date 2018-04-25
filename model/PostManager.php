@@ -11,6 +11,15 @@ class PostManager extends Manager
 		return $query;
 	}
 
+	public function getNumberOfPosts()
+	{
+		$db = $this->dbConnect();
+		$query = $db->query('SELECT * FROM posts');
+		$numberOfPosts = $query->rowCount();
+
+		return $numberOfPosts;
+	}
+
 	public function getPost($postId)
 	{
 		$db = $this->dbConnect();
@@ -21,10 +30,14 @@ class PostManager extends Manager
 		return $post;
 	}
 
-	public function getPostsPreviews()
+	public function getPostsPreviews($depart, $postsPerPage)
 	{
 		$db = $this->dbConnect();
-		$query = $db->query('SELECT id, LEFT(content, 250) as excerpt, creation_date FROM posts');
+		$query = $db->prepare('SELECT id, LEFT(content, 250) as excerpt, DATE_FORMAT(creation_date, \'%d/%m/%Y à %H:%i\') as creation_date FROM posts LIMIT :depart, :postsPerPage');
+		$query->bindValue(':depart', $depart, PDO::PARAM_INT);
+		$query->bindValue(':postsPerPage', $postsPerPage, PDO::PARAM_INT);
+		$query->execute();
+
 		return $query;
 	}
 
@@ -62,7 +75,7 @@ class PostManager extends Manager
 	public function deletePost($postId)
 	{
 		$db = $this->dbConnect();
-		$query = $db->prepare('DELETE FROM posts WHERE id = :postId');
+		$query = $db->prepare('DELETE FROM posts WHERE posts.id = :postId');
 		$query->bindValue(':postId', $postId, PDO::PARAM_INT);
 		$affectedLines = $query->execute();
 

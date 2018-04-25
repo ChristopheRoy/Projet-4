@@ -5,7 +5,7 @@ class CommentManager extends Manager
 	public function getComments($postId)
 	{
 		$db = $this->dbConnect();
-		$query = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = :postId ORDER BY comment_date DESC LIMIT 5');
+		$query = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %H:%i\') AS comment_date_fr FROM comments WHERE post_id = :postId ORDER BY comment_date DESC LIMIT 5');
 		$query->bindValue(':postId', $postId, PDO::PARAM_INT);
 		$query->execute();
 
@@ -21,6 +21,18 @@ class CommentManager extends Manager
 		$comment = $query->fetch();
 
 		return $comment;
+	}
+
+	public function countComments($postId)
+	{
+		$db = $this->dbConnect();
+		$query = $db->prepare('SELECT COUNT(*) as COUNT FROM comments WHERE post_id = :postId');
+		$query->bindValue(':postId', $postId, PDO::PARAM_INT);
+		$query->execute();
+
+		$comments = $query->fetch();
+
+		return $comments;
 	}
 
 	public function postComment($postId, $author, $comment) // set
@@ -55,11 +67,21 @@ class CommentManager extends Manager
 		return $query;
 	}
 
-	public function deleteComment($checked_comments_id)
+	public function deleteComment($commentId) // delete reported comment
 	{
 		$db = $this->dbConnect();
-		$query = $db->prepare('DELETE FROM comments WHERE id = :checked_comments_id');
-		$query->bindValue(':checked_comments_id', $checked_comments_id, PDO::PARAM_INT);
+		$query = $db->prepare('DELETE FROM comments WHERE id = :commentId');
+		$query->bindValue(':commentId', $commentId, PDO::PARAM_INT);
+		$affectedLines = $query->execute();
+
+		return $affectedLines;
+	}
+
+	public function deleteCommentsOfAPost($postId) // when you delete a post, call this method to delete all its comments if there's any
+	{
+		$db = $this->dbConnect();
+		$query = $db->prepare('DELETE FROM comments WHERE post_id = :postId');
+		$query->bindValue(':postId', $postId, PDO::PARAM_INT);
 		$affectedLines = $query->execute();
 
 		return $affectedLines;

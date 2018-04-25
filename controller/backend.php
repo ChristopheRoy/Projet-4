@@ -4,13 +4,25 @@ require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 require_once('model/UserManager.php');
 
-function adminListPosts()
+function adminListPosts($pageCourante)
 {
 	if(isset($_SESSION['id']) && isset($_SESSION['name']) && isset($_SESSION['rank']) && $_SESSION['rank'] == 'admin')
 	{
+		$postsPerPage = 5;
+		$depart = ($pageCourante-1)*$postsPerPage;
+
 		$postManager = new PostManager();
-		$posts = $postManager->getPostsPreviews();
+		$posts = $postManager->getPostsPreviews($depart, $postsPerPage);
+		$numberOfPosts = $postManager->getNumberOfPosts();
+
+		$nombreDePages = ceil($numberOfPosts/$postsPerPage)+1; 
 		require('view/backend/adminListPostsView.php');
+
+		if(isset($_GET['page']) && $_GET['page'] > $nombreDePages)
+		{
+			header('Location: index.php?access=admin&interface=dashboard');
+		}
+		
 	}
 	else
 	{
@@ -45,7 +57,7 @@ function addPost($postContent)
 		}
 		else
 		{
-			header('Location: index.php?access=admin&page=dashboard');
+			header('Location: index.php?access=admin&interface=dashboard');
 		}
 	}
 	else
@@ -83,7 +95,7 @@ function updatePost($postId, $postContent)
 		}
 		else
 		{
-			header('Location:index.php?access=admin&page=dashboard');
+			header('Location:index.php?access=admin&interface=dashboard');
 		}
 	}
 	else
@@ -97,6 +109,7 @@ function removePost($checked_posts_id)
 	if(isset($_SESSION['id']) && isset($_SESSION['name']) && isset($_SESSION['rank']) && $_SESSION['rank'] == 'admin')
 	{
 		$postManager = new PostManager();
+		var_dump($checked_posts_id);
 		foreach ($checked_posts_id as $postId)
 		 {
 			$affectedLines = $postManager->deletePost($postId);
@@ -107,7 +120,16 @@ function removePost($checked_posts_id)
 			}
 			else
 			{
-				header('Location:index.php?access=admin&page=dashboard');
+				$commentManager = new CommentManager();
+				$affectedLinesComments = $commentManager->deleteCommentsOfAPost($postId);
+				if($affectedLinesComments == false)
+				{
+					throw new Exception("Impossible d'effacer les commentaires associés à cet article !");
+				}
+				else
+				{
+					header('Location:index.php?access=admin&interface=dashboard');
+				}
 			}
 		}
 	}
@@ -147,7 +169,7 @@ function removeComment($checked_comments_id)
 			}
 			else
 			{
-				header('Location:index.php?access=admin&page=reported_comments');
+				header('Location:index.php?access=admin&interface=reported_comments');
 			}
 		}
 	}
