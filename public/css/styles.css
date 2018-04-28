@@ -1,33 +1,33 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=Handlee');
 
+html {
+	height: 100%;
+	box-sizing: border-box;
+}
+
 body{
 	font-family: 'Montserrat', sans-serif;
-}
-
-.btn{
-	padding:15px;
-	color:white;
-}
-
-.navbar{
-	padding:15px 0;
-}
-
-.navbar-nav .nav-link{
-	text-transform:uppercase;
-}
-
-.navbar-brand{
-	font-family: 'Handlee', cursive;
-	font-size:35px;
-	margin-left:250px;
+	min-height:100%;
+	position:relative;
+	position: relative;
+	margin: 0;
+	min-height: 100%;
+	padding-bottom:40px;
 }
 
 /*
 *****************************************************
+
 		     	  ENHANCED CLASSES
+
 *****************************************************
+*/ 
+
+/*
+*******************************************
+		     	  PERSONAL
+*******************************************
 */ 
 
 .mt-6{
@@ -86,6 +86,49 @@ body{
 	margin-bottom:120px;
 }
 
+.blue{
+	color:#007BFF;
+}
+
+.orange{
+	color:#FD7805;
+}
+
+.purple{
+	color:#8D37F8;
+}
+
+/*
+*******************************************
+		     	BOOTSTRAP
+*******************************************
+*/ 
+
+.btn{
+	padding:15px;
+	color:white;
+}
+
+.navbar{
+	padding:15px 0;
+}
+
+.navbar-nav .nav-link{
+	text-transform:uppercase;
+}
+
+.navbar-brand{
+	font-family: 'Handlee', cursive;
+	font-size:35px;
+	margin-left:250px;
+}
+
+/*
+*******************************************
+		     	FONTAWESOME
+*******************************************
+*/ 
+
 .fa-1_5x{
 	font-size:20px;
 }
@@ -106,18 +149,11 @@ body{
 	color:#D24639;
 }
 
-.blue{
-	color:#3187DA;
-}
-
-.purple{
-	color:#8D37F8;
-}
 
 /*
 *****************************************************
 
-				 	 ACCUEIL 
+				    VIEW INDEX 
 
 *****************************************************
 */ 
@@ -205,8 +241,7 @@ body{
 }
 
 .presentation{
-	padding:100px;
-	overflow:hidden;
+	margin-bottom:100px;
 }
 
 .presentation .fas{
@@ -220,7 +255,7 @@ body{
 .presentationSection{
 	box-shadow:4px 5px 15px rgba(0,0,0,0.5);
 	padding:25px;
-	height:500px;
+	height:auto;
 	margin:0 20px;
 	transition: transform .2s;
 }
@@ -232,37 +267,41 @@ transform: scale(1.03);
 }
 
 .presentation .btn1{
-	background:#8b31f9;
+	background: linear-gradient(270deg, #2463cc, #6d1ddb);
+	background-size: 400% 400%;
+	-webkit-animation: backgroundGradientAnimation 15s ease infinite;
+	-moz-animation: backgroundGradientAnimation 15s ease infinite;
+	animation: backgroundGradientAnimation 15s ease infinite;
 	font-weight:bold;
 	width:175px;
 }
 
 .presentation .btn2{
-	background:#8b31f9;
+	background: linear-gradient(270deg, #2463cc, #6d1ddb);
+	background-size: 400% 400%;
+	-webkit-animation: backgroundGradientAnimation 15s ease infinite;
+	-moz-animation: backgroundGradientAnimation 15s ease infinite;
+	animation: backgroundGradientAnimation 15s ease infinite;
 	font-weight:bold;
 	width:175px;
 }
 
-.presentation .btn1:hover{
-	background:#2E88D9;
-	color:white;
-}
-
-.presentation .btn2:hover{
-	background:#2E88D9;
+.presentation .btn1:hover, .presentation .btn2:hover{
 	color:white;
 }
 
 /*
-*****************************************************
-		     	SIGN_IN SIGN_UP SECTION
-*****************************************************
+*******************************************
+		  SIGN_IN SIGN_UP SECTION
+*******************************************
 */ 
 
 .signInSignUpSection{
 	height:150px;
+	width:100%;
 	display:flex;
 	align-items:center;
+	justify-content:space-around;
 	background: linear-gradient(270deg, #2463cc, #6d1ddb);
 	background-size: 400% 400%;
 	-webkit-animation: backgroundGradientAnimation 15s ease infinite;
@@ -294,26 +333,18 @@ transform: scale(1.03);
 	font-size:20px;
 }
 
-.signInSignUpSection .btnInscription{
-	margin-left:250px;
-}
-
-.signInSignUpSection .btnConnexion{
-	margin-left:950px;
-}
-
 .signInSignUpSection .btn:hover{
 	background:rgba(0,0,0,0.5);
 	border:none;
 }
 
 /*
-*****************************************************
-				 	    HR
-*****************************************************
-*/ 
+*******************************************
+		  		  HR
+*******************************************
+*/
 
-
+/* NOT USED YET */
 
 hr{
 	background: linear-gradient(to right, #8b31f9 0%,#7126f2 51%,#2989d8 100%,#7db9e8 100%);
@@ -325,16 +356,18 @@ hr{
 
 
 /*
-*****************************************************
-				 	  QUOTE
-*****************************************************
-*/ 
+*******************************************
+		  		  QUOTE
+*******************************************
+*/
+
+/* Coming soon. This section doesn't exist yet */
 
 
 /*
 *****************************************************
 
-				  LIST ARTICLES
+				 VIEW LIST ARTICLES
 
 *****************************************************
 */ 
@@ -352,10 +385,39 @@ hr{
 /*
 *****************************************************
 
-				  RESPONSIVE
+				  VIEW SINGLE POST
 
 *****************************************************
 */ 
+
+.report-btn{
+	padding:15px 35px;
+	background:#FD7805;
+	border:none;
+	color:white;
+}
+
+.report-btn:hover{
+	background:#FF6632;
+}
+
+.comment{
+	margin-top:-10px;
+}
+
+/*
+*****************************************************
+
+				   RESPONSIVE
+
+*****************************************************
+*/ 
+
+/*
+*******************************************
+		    INDEX VIEW RESPONSIVE
+*******************************************
+*/
 
 @media screen and (max-width: 1200px) {
 	.navbar-brand{
@@ -386,10 +448,6 @@ hr{
 		justify-content:flex-start;
 		margin-top:50px;
 	}
-
-	.presentation{
-		padding:0;
-	}
 }
 
 @media screen and (max-width: 576px) {
@@ -411,4 +469,56 @@ hr{
 	.presentationSection{
 		height:600px;
 	}
+}
+
+/*
+*****************************************************
+
+					  ADMIN
+
+*****************************************************
+*/ 
+
+/*
+*******************************************
+		 	 VIEW DASHBOARD
+*******************************************
+*/
+
+.table thead th{
+	background:#007BFF;
+	color:white;
+}
+
+.table thead th:hover{
+	background:#0069d9;
+	color:white;
+}
+
+#dashboard .table .blue:hover{
+	color:#0069d9;
+}
+
+
+
+/*
+*****************************************************
+
+					  FOOTER
+
+*****************************************************
+*/ 
+
+footer{
+	background:black;
+	color:white;
+	position:absolute;
+	bottom:0;
+	right:0;
+	left:0;
+}
+
+footer a:hover{
+	color:#007BFF;
+	text-decoration:none;
 }

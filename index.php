@@ -24,7 +24,15 @@ try
 		{
 			if(isset($_GET['id']) && $_GET['id'] > 0)
 			{
-				post();
+				if(isset($_GET['page']) && !empty($_GET['page']) && $_GET['page'] > 0)
+				{
+					$pageCourante = $_GET['page'];
+				}
+				else
+				{
+					$pageCourante = 1;
+				}
+				post($pageCourante);
 			}
 			else
 			{
@@ -46,14 +54,7 @@ try
 		{
 			if(isset($_GET['id']) && $_GET['id'] > 0)
 			{
-				if(!empty($_POST['author']) && !empty($_POST['comment']))
-				{
-					addComment($_GET['id'], $_POST['author'], $_POST['comment']);
-				}
-				else
-				{
-					throw new Exception('Erreur : tous les champs ne sont pas remplis !');
-				}
+				addComment();
 			}
 			else
 			{

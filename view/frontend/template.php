@@ -2,7 +2,25 @@
 if(isset($_SESSION['id']) && isset($_SESSION['name']) && $_SESSION['rank'] == 'default_user')
 {
 	ob_start();?>
-	<a href="index.php?action=disconnect">Se déconnecter</a>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+			<a class="navbar-brand" href="#"><span class="blue">J</span>ean <span class="blue">F</span>orteroche</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul id="myScrollspy" class="navbar-nav mx-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="index.php">Accueil</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="index.php?action=listPosts">Mon roman</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="index.php?action=disconnect">Se déconnecter</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
 	<?php
 	$menu = ob_get_clean();
 }
@@ -10,7 +28,7 @@ else if(isset($_SESSION['id']) && isset($_SESSION['name']) && $_SESSION['rank'] 
 {
 	ob_start();?>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-			<a class="navbar-brand" href="#"><span class="blue">J</span>ean <span class="purple">F</span>orteroche</a>
+			<a class="navbar-brand" href="#"><span class="blue">J</span>ean <span class="blue">F</span>orteroche</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -39,7 +57,7 @@ else
 	ob_start();
 	?>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-			<a class="navbar-brand" href="#"><span class="blue">J</span>ean <span class="purple">F</span>orteroche</a>
+			<a class="navbar-brand" href="#"><span class="blue">J</span>ean <span class="blue">F</span>orteroche</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -139,5 +157,6 @@ else
 		</div>
 		<script src="public/js/jquery-3.2.1.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<footer class="p-2 text-center">© Jean Forteroche - <a href="" class="blue">Mentions légales</a></footer>
 	</body>
 </html>

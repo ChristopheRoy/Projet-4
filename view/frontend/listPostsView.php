@@ -3,7 +3,7 @@
 	$title = 'Mon blog'; ?>
 
 	<?php ob_start(); ?>
-		<h1 class="text-center mt-12 mb-4"> <i class="fas fa-plane blue"></i> Billet simple pour l'Alaska</h1>
+		<h1 class="text-center mt-12 mb-4 blue"> <i class="fas fa-plane blue"></i> Billet simple pour l'Alaska</h1>
 		
 		<?php
 		while ($data = $posts->fetch())
@@ -40,7 +40,7 @@
 				<div class="col-md-12">
 					<p>Pages
 						<?php
-						for ($i=1; $i < $nombreDePages; $i++) { 
+						for ($i=1; $i <= $nombreDePages; $i++) { 
 							if($i == $pageCourante)
 							{
 								echo $i;
