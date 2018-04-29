@@ -1,3 +1,5 @@
+<?php require('view/frontend/menu.php'); ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,28 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="public/css/styles.css">
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-			<a class="navbar-brand" href="#">Jean Forteroche</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul id="myScrollspy" class="navbar-nav mx-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="index.php">Accueil</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="index.php?action=listPosts">Mon roman</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="index.php?access=admin&interface=dashboard">Panneau d'administration</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="index.php?action=disconnect">Se déconnecter</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
+		<?= getMenu(); ?>
 		<div class="mt-10">
 			<?= $content ?>
 		</div>
@@ -37,5 +18,6 @@
 		<script>tinymce.init({ selector:'textarea' });</script>
 		<script src="public/js/jquery-3.2.1.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<footer class="p-2 text-center">© Jean Forteroche - <a href="" class="blue">Mentions légales</a></footer>
 	</body>
 </html>

@@ -109,7 +109,6 @@ function removePost($checked_posts_id)
 	if(isset($_SESSION['id']) && isset($_SESSION['name']) && isset($_SESSION['rank']) && $_SESSION['rank'] == 'admin')
 	{
 		$postManager = new PostManager();
-		var_dump($checked_posts_id);
 		foreach ($checked_posts_id as $postId)
 		 {
 			$affectedLines = $postManager->deletePost($postId);
@@ -139,12 +138,17 @@ function removePost($checked_posts_id)
 	}	
 }
 
-function listReportedComments()
+function listReportedComments($pageCourante)
 {
 	if(isset($_SESSION['id']) && isset($_SESSION['name']) && isset($_SESSION['rank']) && $_SESSION['rank'] == 'admin')
 	{
+		$reportedCommentsPerPage = 5;
+		$depart = ($pageCourante-1)*$reportedCommentsPerPage;
+
 		$commentManager = new CommentManager;
-		$query = $commentManager->getReportedComments();
+		$numberOfReportedComments = $commentManager->getNumberOfReportedComments();
+		$nombreDePages = ceil($numberOfReportedComments/$reportedCommentsPerPage);
+		$query = $commentManager->getReportedComments($depart, $reportedCommentsPerPage);
 
 		require('view/backend/listReportedCommentsView.php');
 	}	
@@ -169,7 +173,15 @@ function removeComment($checked_comments_id)
 			}
 			else
 			{
-				header('Location:index.php?access=admin&interface=reported_comments');
+				$affectedLines2 = $commentManager->deleteReportOfAComment($comment_id);
+				if($affectedLines2 == false)
+				{
+					throw new Exception('Erreur lors de la supression du commentaire signalé.');
+				}
+				else
+				{
+					header('Location:index.php?access=admin&interface=reported_comments');
+				}
 			}
 		}
 	}

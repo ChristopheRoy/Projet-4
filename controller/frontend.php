@@ -99,25 +99,37 @@ function reportComment($post_id, $comment_id)
 	if(isset($_POST['reason']) && !empty($_POST['reason']))
 	{
 		$commentManager = new CommentManager();
-		$affectedLines = $commentManager->setReportedComment($comment_id, $_SESSION['name'], $_POST['reason']);
-		if($affectedLines == false)
+		$theCommentStillExists = $commentManager->checkIfTheCommentStillExists($comment_id);
+
+		if($theCommentStillExists)
 		{
-			throw new Exception('Impossible d\'envoyer le commentaire signalé en base de données. Veuillez réessayer plus tard.');
+			$theUserHasAlreadyReportedThisComment = $commentManager->checkIfTheUserHasAlreadyReportedThisComment($_SESSION['name'], $comment_id);
+			if($theUserHasAlreadyReportedThisComment)
+			{
+				throw new Exception("Vous avez déjà signalé ce commentaire ! ");
+			}
+			else
+			{
+				$affectedLines = $commentManager->setReportedComment($comment_id, $_SESSION['name'], $_POST['reason']);
+				if($affectedLines == false)
+				{
+					throw new Exception('Impossible d\'envoyer le commentaire signalé en base de données. Veuillez réessayer plus tard.');
+				}
+				else
+				{
+					header('Location: index.php?action=post&id=' . $post_id);
+				}
+			}		
 		}
 		else
 		{
-			header('Location: index.php?action=post&id=' . $post_id);
+			throw new Exception("Ce commentaire a déjà été supprimé par un Administrateur ! Merci de votre signalement.");
 		}
 	}
 	else
 	{
 		throw new Exception("Erreur. Vous devez remplir les champs du formulaire !");
 	}
-}
-
-function signup()
-{
-	require('view/frontend/signUpView.php');
 }
 
 function addUser()

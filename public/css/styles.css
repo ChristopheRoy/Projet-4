@@ -86,6 +86,10 @@ body{
 	margin-bottom:120px;
 }
 
+.inputPaddingFix{
+	padding-left:5px;
+}
+
 .blue{
 	color:#007BFF;
 }
@@ -96,6 +100,10 @@ body{
 
 .purple{
 	color:#8D37F8;
+}
+
+.background-purple{
+	background:#8D37F8 !important;
 }
 
 /*
@@ -148,7 +156,6 @@ body{
 .fa-google-plus-g{
 	color:#D24639;
 }
-
 
 /*
 *****************************************************
@@ -402,7 +409,13 @@ hr{
 }
 
 .comment{
-	margin-top:-10px;
+	word-wrap: break-word;
+}
+
+.fakeInput{
+	border:1px solid grey;
+	color:grey;
+	background:rgba(0,0,0,0.2);
 }
 
 /*
