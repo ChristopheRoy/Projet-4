@@ -227,19 +227,7 @@ try
 	else
 	{
 		getIndexView();
-	}
-
-
-
-
-
-
-
-
-
-
-
-	
+	}	
 }
 catch(Exception $e)
 {

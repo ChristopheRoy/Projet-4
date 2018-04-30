@@ -28,19 +28,19 @@ ob_start();?>
 				Vous retrouverez ici toutes les informations sur mes romans ainsi que mes projets personnels.
 			</p>
 			<div class="row justify-content-center">
-				<div class="col-8 col-lg-3 presentationSection">
+				<div class="col-12 col-md-8 col-lg-3 presentationSection">
 					<i class="fas fa-pencil-alt fa-4x blue"></i>
 					<h2 class="mb-5">Mes projets</h2>
 					<p class="text-justify mb-5">Lorem ipsum dolor sit amet  duis ultrices mauris ut quam consequat, consectetur adipiscing elit. Cras ut odio sodales, tempus metus non, vulputate metus. Duis ultrices mauris ut quam consequat, ac vestibulum nisl iaculis. </p>
 					<a href="#" class="btn btn1">Plus d'infos</a>
 				</div>
-				<div class="col-8 col-lg-3 presentationSection">
+				<div class="col-12 col-md-8 col-lg-3 presentationSection">
 					<i class="fas fa-book fa-4x blue"></i>
 					<h2 class="mb-5">Mon dernier roman</h2>
 					<p class="text-justify mb-5">Lorem ipsum dolor sit amet  duis ultrices mauris ut quam consequat, consectetur adipiscing elit. Cras ut odio sodales, tempus metus non, vulputate metus. Duis ultrices mauris ut quam consequat, ac vestibulum nisl iaculis. </p>
 					<a href="index.php?action=listPosts" class="btn btn2">En savoir plus</a>
 				</div>
-				<div class="col-8 col-lg-3 presentationSection">
+				<div class="col-12 col-md-8 col-lg-3 presentationSection">
 					<i class="fas fa-user fa-4x blue"></i>
 					<h2 class="mb-5">Réseaux sociaux</h2>
 					<p class="text-justify mb-5">Lorem ipsum dolor sit amet  duis ultrices mauris ut quam consequat, consectetur adipiscing elit. Cras ut odio sodales, tempus metus non, vulputate metus. Duis ultrices mauris ut quam consequat, ac vestibulum nisl iaculis. </p>

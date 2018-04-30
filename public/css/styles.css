@@ -264,13 +264,6 @@ body{
 	padding:25px;
 	height:auto;
 	margin:0 20px;
-	transition: transform .2s;
-}
-
-.presentationSection:hover{
-	-ms-transform: scale(1.03); /* IE 9 */
--webkit-transform: scale(1.03); /* Safari 3-8 */
-transform: scale(1.03); 
 }
 
 .presentation .btn1{
@@ -421,72 +414,6 @@ hr{
 /*
 *****************************************************
 
-				   RESPONSIVE
-
-*****************************************************
-*/ 
-
-/*
-*******************************************
-		    INDEX VIEW RESPONSIVE
-*******************************************
-*/
-
-@media screen and (max-width: 1200px) {
-	.navbar-brand{
-		margin-left:85px;
-	}
-}
-
-@media screen and (max-width: 990px) {
-	.navbar-brand{
-		margin-left:20px;
-	}
-
-	.presentationSection{
-		margin:50px 0;
-	}	
-}
-
-@media screen and (max-width: 842px) {
-	.fixed-top{
-		position:relative;
-	}
-
-	.indexHeader{
-		margin-top:-100px;
-	}
-
-	.texteBanniere{
-		justify-content:flex-start;
-		margin-top:50px;
-	}
-}
-
-@media screen and (max-width: 576px) {
-	.texteBanniere h2{
-		font-size:30px;
-	}
-
-	.texteBanniere p{
-		font-size:15px;
-	}
-
-	.btnConsulterPage{
-		margin-top:0px;
-		margin-bottom:0px;
-	}
-}
-
-@media screen and (max-width: 480px) {
-	.presentationSection{
-		height:600px;
-	}
-}
-
-/*
-*****************************************************
-
 					  ADMIN
 
 *****************************************************
@@ -534,4 +461,113 @@ footer{
 footer a:hover{
 	color:#007BFF;
 	text-decoration:none;
+}
+
+
+/*
+*****************************************************
+
+				   RESPONSIVE
+
+*****************************************************
+*/ 
+
+/*
+*******************************************
+		    INDEX VIEW RESPONSIVE
+*******************************************
+*/
+
+@media screen and (max-width: 1200px) {
+	.navbar-brand{
+		margin-left:85px;
+	}
+}
+
+@media screen and (max-width: 990px) {
+	.navbar-brand{
+		margin-left:20px;
+	}
+
+	.presentationSection{
+		margin:50px 0;
+	}	
+}
+
+@media screen and (max-width: 842px) {
+	.fixed-top{
+		position:relative;
+	}
+
+	.indexHeader{
+		margin-top:-100px;
+	}
+
+	.texteBanniere{
+		justify-content:flex-start;
+		margin-top:50px;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.presentationSection{
+		transition: transform .2s;
+	}
+
+	.presentationSection:hover{
+		-ms-transform: scale(1.03); /* IE 9 */
+		-webkit-transform: scale(1.03); /* Safari 3-8 */
+		transform: scale(1.03); 
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.texteBanniere h2{
+		font-size:30px;
+	}
+
+	.texteBanniere p{
+		font-size:15px;
+	}
+
+	.btnConsulterPage{
+		margin-top:0px;
+		margin-bottom:0px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.presentationSection{
+		height:600px;
+	}
+}
+
+@media screen and (max-width: 426px) {
+	.texteBanniere h2{
+		font-size:20px;
+	}
+
+	.texteBanniere p{
+		font-size:15px;
+	}
+
+	.btnConsulterPage{
+		margin-top:0px;
+		margin-bottom:0px;
+		padding:0px !important;
+	}
+}
+
+@media screen and (max-width: 324px) {
+	.texteBanniere h2{
+		font-size:17px;
+	}
+
+	.texteBanniere p{
+		font-size:11px;
+	}
+
+	.btnConsulterPage{
+		font-size:12px;
+	}
 }

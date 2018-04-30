@@ -14,6 +14,18 @@ class UserManager extends Manager
 		return $affectedLines;
 	}
 
+	public function checkIfTheUserAlreadyExists($name)
+	{
+		$db = $this->dbConnect();
+		$query = $db->prepare('SELECT * FROM users WHERE name = :name');
+		$query->bindValue(':name', $name, PDO::PARAM_STR);
+		$query->execute();
+
+		$theUserAlreadyExists = $query->fetch();
+
+		return $theUserAlreadyExists;
+	}
+
 	public function getUser($name)
 	{
 		$db = $this->dbConnect();
